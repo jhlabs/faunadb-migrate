@@ -8,7 +8,10 @@ import migrate from "./migrate";
 import rollback from "./rollback";
 const MIGRATION_FOLDER = "./migrations";
 const client = new faunadb.Client({
-  secret: String(process.env.FAUNADB_SECRET)
+  secret: String(process.env.FAUNADB_SECRET),
+  domain: String(process.env.FAUNADB_DOMAIN),
+  scheme: String(process.env.FAUNADB_SCHEME) as "http" | "https",
+  port: Number(process.env.FAUNADB_PORT),
 });
 
 export {
